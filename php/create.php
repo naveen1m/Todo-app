@@ -2,7 +2,8 @@
 
 if($conn){
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
-        // echo "server made resquested 'POST' method";
+        // echo "create.php";
+
         $description = $_POST["desc"];
         // echo var_dump($description);
         if(!empty($description)){
