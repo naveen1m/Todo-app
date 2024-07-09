@@ -11,5 +11,8 @@ This project is a basic Todo application designed to help you learn and understa
 
 ### Demo Video
 
-<iframe src="https://drive.google.com/file/d/188CPsUl3S9y180YEUB3rxsPTQ0bL_Ca_/preview" width="640" height="480" allow="autoplay"></iframe>
+https://github.com/naveen1m/Todo-app/assets/94122792/ecc531fa-5779-4577-8b92-56e554c635fe
+
+
+
 
