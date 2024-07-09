@@ -11,5 +11,5 @@ This project is a basic Todo application designed to help you learn and understa
 
 ### Demo Video
 
-<iframe width="560" height="315" src="https://drive.google.com/file/d/188CPsUl3S9y180YEUB3rxsPTQ0bL_Ca_/view"frameborder="0" allowfullscreen></iframe>
+<iframe src="https://drive.google.com/file/d/188CPsUl3S9y180YEUB3rxsPTQ0bL_Ca_/preview" width="640" height="480" allow="autoplay"></iframe>
 
