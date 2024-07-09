@@ -56,7 +56,7 @@ if($conn){
             <!-- display todo list -->
             
             <?php
-                $sql = "SELECT * FROM `todo`";
+                $sql = "SELECT * FROM `todo` ORDER BY `tstamp` DESC";
                 $result = mysqli_query($conn, $sql);
                 // echo var_dump($result);
                 
