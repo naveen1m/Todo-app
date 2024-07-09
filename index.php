@@ -4,6 +4,7 @@ if($conn){
     // require_once './php/read.php';
     require_once './php/create.php';
     require_once './php/update.php';
+    // require_once './php/delete.php';
 }
 ?>
 
@@ -42,13 +43,7 @@ if($conn){
       </form>
 
     </section>
-<!-- 
-    <section class="w-1/2 border-2 flex items-center space-x-4 p-4 bg-gray-200 rounded-lg mt-8  ">
-      <p class="flex-1">I will complete maths basic today. <br><span class="text-sm text-gray-800">12-07-2024</span></p>
-      <button class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600">Update</button>
-      <button class="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none focus:bg-red-600">Delete</button>
-      
-    </section> -->
+
     <!-- display todo list -->
      
     <?php
@@ -65,7 +60,7 @@ if($conn){
             echo '<section class="w-1/2 border-2 flex items-center space-x-4 p-4 bg-gray-200 rounded-lg mt-8">';
             echo '<p class="flex-1">' . htmlspecialchars($description) . '<br><span class="text-sm text-gray-800">' . $row['tstamp'] . '</span></p>';
             echo '<button id="edit" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600" onclick="edit(\'' . $description . '\', \''. $itemid .'\')">Edit</button>';
-            echo '<button class="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none focus:bg-red-600">Delete</button>';
+            echo '<button class="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none focus:bg-red-600"  onclick="deleteTodo(' . $itemid . ')" >Delete</button>';
             echo '</section>';
         }
     ?>
@@ -106,7 +101,53 @@ if($conn){
         console.log(desc, itemid)
         // alert("clicked");
     }
+    
+    function deleteTodo(itemid){
+            
+        fetch("php/delete.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ itemId: itemid })
+        })
+        .then(response => {
+            console.log("Response status:", response.status);
+            console.log("Response headers:", response.headers);
+            return response.text();
+        })
+        .then(data => {
+            console.log("Raw response:", data);
+            try {
+                let jsonData = JSON.parse(data);
+                console.log("Parsed JSON:", jsonData);
+                console.log("json_encode is working correctly");
+                
+                setTimeout(() => {
+                location.reload();
+            }, 500);
+            } catch (error) {
+                console.error("Error parsing JSON:", error);
+                console.log("json_encode might not be working correctly");
+            }
+        })
+        .catch(error => {
+            console.error("Fetch error:", error);
+        });
+
+        // alert(itemid);
+    }
+    
 </script>
-  
+
+<?php
+if($conn){
+    echo '<script>
+            setTimeout(function() {
+                document.getElementById("successMessage").style.display = "none";
+            }, 500); // 1000 milliseconds = 1 second
+          </script>';
+}
+?>
 </body>
 </html>
